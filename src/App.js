@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+import Navbar from './navbar'
+import Show from './show'
+
+
+import React, { Component } from 'react'
+
+export class App extends Component {
+  constructor() {
+    super()
+  
+    this.state = {
+       searchtext:''
+    }
+  }
+
+  onsearchchange = (props) =>{
+        this.setState({...this.state,...props })
+        console.log(this.state.searchtext)
+  }
+  
+  
+  
+  render() {
+    return (
+      <div className="App">
+      <Navbar onsearchchange={this.onsearchchange}></Navbar>
+      <Show searchtext={this.state.searchtext}></Show>
+     </div>
+    )
+  }
 }
 
-export default App;
+export default App
+
+
+
+
